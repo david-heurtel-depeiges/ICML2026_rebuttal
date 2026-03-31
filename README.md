@@ -1,1 +1,9 @@
 # ICML2026_rebuttal
+
+# LLPS Benchmark Results
+
+Biomolecular condensates are membraneless organelles formed by liquid-liquid phase separation (LLPS) — a process driven largely by intrinsically disordered regions (IDRs). We use condensate membership prediction as a probe for how well protein language models handle disordered proteins: structure-conditioned models (SaProt, GearNet) receive potentially uninformative or misleading structural tokens for IDRs, whereas sequence-only models are unaffected.
+
+**Task.** Multilabel condensate classification (14 classes, DrLLPS). A frozen XGBoost head is trained on embeddings; micro-F1 is reported on the test split. The x-axis below is per-protein MobiDB disorder fraction; the curves show Gaussian-kernel-smoothed local micro-F1 (bandwidth = 10%, 95% bootstrap CI).
+
+![Figure 1. Kernel-smoothed local micro-F1 vs. per-protein disorder level on the LLPS condensate classification benchmark, for selected model comparisons. Proteins are sourced from DrLLPS and labeled for membership in one or more biomolecular condensate types (multilabel). Per-protein disorder scores are from MobiDB; proteins longer than 2048 residues are excluded. For each model, a frozen-backbone XGBoost classifier is trained on the training split and evaluated on the test split; micro-F1 is computed per protein. Each curve shows a Gaussian kernel-weighted local micro-F1 as a function of disorder percentage (bandwidth = 10%). Shaded regions are 95% bootstrap confidence intervals (500 resamples). Row 1: pairwise comparisons of base vs. structure-aligned models. Row 2: sequence-only vs. structure-conditioned models (SaProt) and GearNet-based embeddings, directly probing performance on disordered proteins.](local_f1_vs_disorder_extended.png)
